@@ -25,7 +25,7 @@ export function Hero() {
         </h1>
 
         {/* Podnaslov */}
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
+        <p className="mx-auto mt-6 max-w-2xl text-lg font-semibold text-muted">
           Imate biznis i znate da vam treba sajt, ali nemate vremena da se bavite domenom,
           hostingom i održavanjem? Mi preuzimamo sve — vi dobijate sajt koji otvara nove
           poslovne prilike.
