@@ -17,17 +17,14 @@ export function Contact() {
     "w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand";
 
   return (
-    <section id="kontakt" className="relative">
-      {/*
-        Glow koji premošćuje granicu sa prethodnom sekcijom — proteže se naviše
-        (–top-32) i meko se utapa, pa nema naglog reza; horizontalno isečen
-        (inset-x-0 + overflow-hidden) da ne pravi overflow na mobilnom.
-      */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 -top-32 -z-10 h-[620px] overflow-hidden"
-      >
-        <div className="absolute left-1/2 top-40 h-[440px] w-[900px] -translate-x-1/2 rounded-full bg-brand/12 blur-[140px]" />
+    <section id="kontakt" className="relative overflow-hidden">
+      {/* Animirana aurora (isti efekat kao Hero) — meko lebdi, bez naglog reza */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="aurora-center absolute left-1/2 top-[12%] h-[440px] w-[820px] -translate-x-1/2 rounded-full bg-brand/16 blur-[140px]" />
+        <div
+          className="aurora-float absolute bottom-[10%] right-[10%] h-[340px] w-[340px] rounded-full bg-coral/12 blur-[120px]"
+          style={{ animationDelay: "-5s" }}
+        />
       </div>
 
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:py-28 lg:grid-cols-2 lg:items-center">
