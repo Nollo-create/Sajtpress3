@@ -21,7 +21,7 @@ const points = [
 
 export function Guarantee() {
   return (
-    <section className="border-t border-border/60">
+    <section>
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:py-28 lg:grid-cols-2 lg:items-center">
         {/* Levo — poruka */}
         <div>

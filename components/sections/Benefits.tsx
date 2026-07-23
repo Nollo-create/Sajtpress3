@@ -32,7 +32,7 @@ const benefits: Benefit[] = [
 
 export function Benefits() {
   return (
-    <section className="relative overflow-hidden border-t border-border/60">
+    <section className="relative overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute right-[-10%] top-1/2 h-[400px] w-[600px] -translate-y-1/2 rounded-full bg-brand/8 blur-[130px]" />
       </div>

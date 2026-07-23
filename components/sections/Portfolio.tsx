@@ -69,7 +69,7 @@ const projects: Project[] = [
 
 export function Portfolio() {
   return (
-    <section id="projekti" className="border-t border-border/60">
+    <section id="projekti">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-3 text-sm font-medium text-brand">Naši radovi</p>

@@ -60,9 +60,11 @@ const plans: Plan[] = [
 
 export function Pricing() {
   return (
-    <section id="cenovnik" className="bg-light text-ink">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
-        <div className="mx-auto max-w-2xl text-center">
+    <section id="cenovnik" className="bg-background">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
+        {/* Svetli panel koji lebdi na tamnoj pozadini — sofisticiran kontrast bez mutnog gradijenta */}
+        <div className="rounded-[36px] bg-light px-6 py-14 text-ink shadow-2xl shadow-black/40 ring-1 ring-black/5 sm:px-10 sm:py-20">
+          <div className="mx-auto max-w-2xl text-center">
           <p className="mb-3 text-sm font-medium text-brand">Cenovnik izrade sajtova</p>
           <h2 className="text-3xl text-ink sm:text-4xl">Na osnovu potreba formirali smo 3 paketa</h2>
           <p className="mt-4 text-lg text-ink-muted">
@@ -139,6 +141,7 @@ export function Pricing() {
               od zahteva.
             </p>
           </div>
+        </div>
         </div>
       </div>
     </section>

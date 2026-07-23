@@ -295,7 +295,7 @@ export function Testimonials() {
       id="utisci"
       ref={sectionRef}
       aria-labelledby="utisci-naslov"
-      className={`relative overflow-hidden border-t border-border/60 ${visible ? "tc-visible" : ""}`}
+      className={`relative overflow-hidden ${visible ? "tc-visible" : ""}`}
     >
       {/* Kreativna pozadina: glow krugovi + mreža + marquee */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
