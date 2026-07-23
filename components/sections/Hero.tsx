@@ -14,6 +14,12 @@ export function Hero() {
         />
       </div>
 
+      {/* Postepen prelaz (blend) ka sledećoj sekciji — aurora se meko utapa u pozadinu */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-64 bg-gradient-to-b from-transparent to-background"
+      />
+
       <div className="mx-auto max-w-5xl px-4 py-24 text-center sm:py-32">
         {/* Eyebrow / badge */}
         <div

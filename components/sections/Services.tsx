@@ -36,7 +36,7 @@ const services: Service[] = [
 
 export function Services() {
   return (
-    <section id="usluge" className="border-t border-border/60">
+    <section id="usluge">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-3 text-sm font-medium text-brand">Naše usluge</p>
