@@ -161,6 +161,81 @@
   animation: gradient-pan 6s linear infinite;
 }
 
+/* ---------- Utisci klijenata (premium sekcija) ---------- */
+
+/* Beskonačni marquee u pozadini */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.marquee-track {
+  animation: marquee-left 60s linear infinite;
+}
+.marquee-track-rev {
+  animation: marquee-right 75s linear infinite;
+}
+
+/* Lagano lebdenje kartica */
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+.float-soft {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+/* Pop zvezdica kad kartica postane vidljiva */
+@keyframes star-pop {
+  0% {
+    transform: scale(0) rotate(-35deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.25) rotate(4deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* Scroll-reveal kartica: skrivene dok sekcija nije vidljiva */
+.tc-reveal {
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tc-visible .tc-reveal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.tc-star {
+  opacity: 0;
+}
+.tc-visible .tc-star {
+  animation: star-pop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
 /*
   Poštuj korisnike koji smanjuju animacije: gasimo samo ulaznu (fade-up) motoriku,
   dok suptilne ambijentalne animacije (aurora, shimmer, kursor) ostaju.
@@ -169,5 +244,19 @@
   .animate-fade-up {
     animation: none;
     opacity: 1;
+  }
+  .marquee-track,
+  .marquee-track-rev,
+  .float-soft {
+    animation: none;
+  }
+  .tc-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .tc-star {
+    opacity: 1;
+    animation: none;
   }
 }

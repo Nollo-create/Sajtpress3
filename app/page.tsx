@@ -6,6 +6,7 @@ import { Guarantee } from "@/components/sections/Guarantee";
 import { Pricing } from "@/components/sections/Pricing";
 import { Benefits } from "@/components/sections/Benefits";
 import { Portfolio } from "@/components/sections/Portfolio";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
         <Pricing />
         <Benefits />
         <Portfolio />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />
