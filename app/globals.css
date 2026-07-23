@@ -22,33 +22,46 @@
   --color-brand-dark: #e01e5a;
   --color-coral: #fe9567;
 
+  /* Svetla sekcija (kontrast, kao na Appwrite-u) */
+  --color-light: #f6f6f7;
+  --color-light-surface: #ffffff;
+  --color-light-border: #e4e4e7;
+  --color-ink: #19191c;
+  --color-ink-muted: #52525b;
+
   /* Fontovi (varijable dolaze iz next/font u layout.tsx) */
   --font-sans: var(--font-inter);
   --font-display: var(--font-hanken);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/*
+  Bazni stilovi idu u @layer base da bi Tailwind utility klase (npr. text-ink
+  u svetloj sekciji) mogle da ih nadjačaju.
+*/
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-muted);
-  font-family: var(--font-sans);
-}
+  body {
+    background-color: var(--color-background);
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+  }
 
-/* Naslovi: display font, tanka težina i zbijen razmak — Appwrite estetika */
-h1,
-h2,
-h3,
-h4 {
-  color: var(--color-foreground);
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.025em;
-}
+  /* Naslovi: display font, tanka težina i zbijen razmak — Appwrite estetika */
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-foreground);
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+  }
 
-::selection {
-  background-color: color-mix(in srgb, var(--color-brand) 40%, transparent);
-  color: #ffffff;
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-brand) 40%, transparent);
+    color: #ffffff;
+  }
 }

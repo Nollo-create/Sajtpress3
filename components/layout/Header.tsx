@@ -6,10 +6,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 const navLinks = [
-  { label: "Prednosti", href: "#prednosti" },
-  { label: "Kako radi", href: "#kako-radi" },
+  { label: "Usluge", href: "#usluge" },
+  { label: "Cenovnik", href: "#cenovnik" },
   { label: "Radovi", href: "#projekti" },
-  { label: "Utisci", href: "#utisci" },
+  { label: "Kontakt", href: "#kontakt" },
 ];
 
 export function Header() {
@@ -40,7 +40,7 @@ export function Header() {
         </div>
 
         <div className="hidden md:block">
-          <Button href="#kontakt">Zakažite konsultaciju</Button>
+          <Button href="#kontakt">Zatražite ponudu</Button>
         </div>
 
         {/* Mobilno dugme */}
@@ -70,7 +70,7 @@ export function Header() {
               </Link>
             ))}
             <Button href="#kontakt" className="mt-2 w-full">
-              Zakažite konsultaciju
+              Zatražite ponudu
             </Button>
           </div>
         </div>

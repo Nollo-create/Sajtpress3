@@ -13,31 +13,32 @@ export function Hero() {
         {/* Eyebrow / badge */}
         <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 px-4 py-1.5 text-xs text-muted">
           <Sparkles size={14} className="text-brand" />
-          Preko 25 izrađenih sajtova za firme u zemlji i inostranstvu
+          Web sajt već od 250 € · Plaćanje u 2 rate
         </div>
 
         {/* Naslov — tanka težina, zbijen razmak, dvotonski (roze → belo) */}
         <h1 className="mx-auto max-w-4xl text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
           <span className="bg-gradient-to-br from-brand via-brand-light to-coral bg-clip-text text-transparent">
-            Sajtovi po meri
+            Izrada sajtova
           </span>{" "}
-          <span className="text-foreground">koji prodaju vaš biznis</span>
+          <span className="text-foreground">koja donosi rezultate</span>
         </h1>
 
         {/* Podnaslov */}
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
-          Dizajniramo i razvijamo moderne, brze sajtove — od ideje do objave. Vi se bavite
-          poslom, mi se bavimo vašim onlajn nastupom.
+          Imate biznis i znate da vam treba sajt, ali nemate vremena da se bavite domenom,
+          hostingom i održavanjem? Mi preuzimamo sve — vi dobijate sajt koji otvara nove
+          poslovne prilike.
         </p>
 
         {/* CTA */}
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button href="#kontakt" className="w-full sm:w-auto">
-            Zakažite besplatnu konsultaciju
+          <Button href="#cenovnik" className="w-full sm:w-auto">
+            Pogledajte cenovnik
             <ArrowRight size={16} />
           </Button>
-          <Button href="#projekti" variant="secondary" className="w-full sm:w-auto">
-            Pogledajte naše radove
+          <Button href="#kontakt" variant="secondary" className="w-full sm:w-auto">
+            Zatražite ponudu
           </Button>
         </div>
       </div>

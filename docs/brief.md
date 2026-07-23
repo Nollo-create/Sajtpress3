@@ -53,22 +53,23 @@ Stil elemenata (Appwrite):
   Za sada koristimo **tekstualni logo „Sajtpress"** (lako se zameni kasnije).
 - **Ikone:** `lucide-react`.
 
-## 4. Sekcije landinga (redosled)
+## 4. Sekcije landinga (implementirano)
 
-1. **Header / navigacija** — logo, linkovi (kotva na sekcije), CTA dugme „Zakaži konsultaciju".
-2. **Hero** — glavni naslov, podnaslov, primarni CTA + sekundarni link. Vizual/ilustracija desno.
-   - Predlog naslova: „Sajtovi po meri koji prodaju vaš biznis."
-   - Predlog podnaslova: „Dizajniramo i razvijamo moderne, brze sajtove — od ideje do objave."
-3. **Prednosti / zašto mi** — 3–6 kartica sa ključnim benefitima (npr. brzina, moderan dizajn,
-   SEO, podrška, prilagođeno mobilnom). — konkretan tekst: TODO
-4. **Kako radi** — proces u koracima (npr. 1. Konsultacija → 2. Dizajn → 3. Razvoj → 4. Objava). — TODO detalji
-5. **Portfolio** — grid prethodnih radova. Sadržaj (26 projekata sa opisima, live linkovima i
-   slikama) je u [`docs/portfolio.md`](portfolio.md). Predlog: prikazati 6–9 najjačih + „Pogledaj sve".
-6. **Utisci klijenata** — testimonijali (ime, firma, citat) i/ili logotipi klijenata. — TODO citati
-7. **Završni CTA** — istaknut poziv na zakazivanje konsultacije + forma ili dugme.
-8. **Footer** — kontakt, društvene mreže, kratki linkovi, copyright.
+Sadržaj preuzet i prilagođen sa postojećeg sajta **www.sajtpress.rs**. Redosled na landingu:
 
-> Nema cenovnika ni FAQ sekcije (po dogovoru). Mogu se dodati kasnije.
+1. **Header** — logo „Sajtpress", nav (Usluge, Cenovnik, Radovi, Kontakt), CTA „Zatražite ponudu".
+2. **Hero** — „Izrada sajtova koja donosi rezultate"; hook „već od 250 € · plaćanje u 2 rate".
+3. **Usluge** — 4 kartice: Izrada · Redizajn · Održavanje · Plaćene reklame.
+4. **Garancija / Kako radimo** — prepustite dizajn, proverene procedure, WordPress, komunikacija, 2 rate.
+5. **Cenovnik** — **svetla sekcija (kontrast, Appwrite pristup)**; 3 paketa (Osnovni €250,
+   Standardni €450, Premijum €700) + kartično plaćanje + napomena.
+6. **Zašto vam je sajt neophodan** — 4 benefit kartice (više klijenata, vidljivost, podaci, kredibilitet).
+7. **Radovi (Portfolio)** — 9 realnih projekata iz [`docs/portfolio.md`](portfolio.md).
+8. **Kontakt** — CTA „Imate pitanje?", telefon 065 2004 765, forma (ime, telefon, email, poruka).
+9. **Footer** — brend, navigacija, kontakt (telefon, email), copyright.
+
+> Blog/„Aktuelnosti", partneri, društvene mreže i FAQ sa originala nisu uključeni na landing —
+> mogu se dodati kasnije po potrebi.
 
 ## 5. Funkcionalnosti
 
