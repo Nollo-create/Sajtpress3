@@ -109,7 +109,7 @@ export default function UslugePage() {
                     </p>
                   </div>
                   <Link
-                    href="/#kontakt"
+                    href="/zatrazite-ponudu"
                     className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-brand px-7 py-3.5 text-sm font-medium text-white transition-colors hover:bg-brand-light"
                   >
                     Zatražite ponudu

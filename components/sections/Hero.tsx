@@ -62,7 +62,7 @@ export function Hero() {
             <ArrowRight size={16} />
           </Button>
           <Button
-            href="#kontakt"
+            href="/zatrazite-ponudu"
             variant="secondary"
             className="w-full uppercase tracking-wide sm:w-auto"
           >

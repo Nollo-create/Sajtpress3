@@ -102,7 +102,7 @@ export function Pricing() {
               </div>
 
               <Link
-                href="#kontakt"
+                href="/zatrazite-ponudu"
                 className={
                   "mt-6 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium uppercase tracking-wide transition-colors " +
                   (plan.featured

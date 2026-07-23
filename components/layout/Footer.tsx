@@ -14,7 +14,7 @@ const navigacija = [
   { label: "Usluge", href: "/usluge" },
   { label: "Cenovnik", href: "/#cenovnik" },
   { label: "Radovi", href: "/#projekti" },
-  { label: "Kontakt", href: "/#kontakt" },
+  { label: "Kontakt", href: "/kontakt" },
 ];
 
 // Brend ikone (lucide-react ih više ne izvozi) — inline SVG.
