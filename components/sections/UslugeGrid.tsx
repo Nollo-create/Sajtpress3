@@ -9,8 +9,6 @@ import {
   Search,
   Target,
   ThumbsUp,
-  PenLine,
-  Lightbulb,
   Check,
   ArrowRight,
 } from "lucide-react";
@@ -22,7 +20,6 @@ type Service = {
   description: string;
   details: string[];
   href: string;
-  cta: string;
 };
 
 // Sadržaj preuzet i prilagođen sa https://sajtpress.rs/usluge/
@@ -38,8 +35,7 @@ const services: Service[] = [
       "Kontakt forma, galerija i Google mape",
       "Mogućnost web prodavnice",
     ],
-    href: "/#cenovnik",
-    cta: "Pogledajte cenovnik",
+    href: "/usluge/izrada-sajtova",
   },
   {
     icon: Wand2,
@@ -51,8 +47,7 @@ const services: Service[] = [
       "Dodavanje novih funkcionalnosti",
       "Brže učitavanje i mobilna prilagođenost",
     ],
-    href: "/#kontakt",
-    cta: "Zatražite ponudu",
+    href: "/usluge/redizajn-sajtova",
   },
   {
     icon: ShieldCheck,
@@ -64,8 +59,7 @@ const services: Service[] = [
       "Zaštita od napada i malware-a",
       "Praćenje dostupnosti i performansi",
     ],
-    href: "/#kontakt",
-    cta: "Zatražite ponudu",
+    href: "/usluge/odrzavanje-sajtova",
   },
   {
     icon: Search,
@@ -77,8 +71,7 @@ const services: Service[] = [
       "On-page i tehnička optimizacija",
       "Praćenje pozicija na Google-u",
     ],
-    href: "/#kontakt",
-    cta: "Zatražite ponudu",
+    href: "/usluge/seo",
   },
   {
     icon: Target,
@@ -90,8 +83,7 @@ const services: Service[] = [
       "Ciljanje po ključnim rečima i lokaciji",
       "Prvi rezultati bez čekanja na SEO",
     ],
-    href: "/#kontakt",
-    cta: "Zatražite ponudu",
+    href: "/usluge/google-reklame",
   },
   {
     icon: ThumbsUp,
@@ -103,32 +95,7 @@ const services: Service[] = [
       "Ciljanje po interesovanjima i publici",
       "Kreativni oglasi i praćenje rezultata",
     ],
-    href: "/#kontakt",
-    cta: "Zatražite ponudu",
-  },
-  {
-    icon: PenLine,
-    title: "Copywriting",
-    description: "Umetnost da se prodaja upakuje u dobro ispričanu priču.",
-    details: [
-      "Prodajni tekstovi i landing kopije",
-      "Priča koja gradi poverenje",
-      "Tekst prilagođen vašoj publici",
-    ],
-    href: "/#kontakt",
-    cta: "Zatražite ponudu",
-  },
-  {
-    icon: Lightbulb,
-    title: "Konsalting",
-    description: "Svakodnevno izlazimo u susret klijentima sa najboljim savetima.",
-    details: [
-      "Saveti o digitalnom nastupu",
-      "Strategija i prioriteti",
-      "Podrška u svakom koraku",
-    ],
-    href: "/#kontakt",
-    cta: "Zatražite ponudu",
+    href: "/usluge/facebook-reklame",
   },
 ];
 
@@ -160,8 +127,9 @@ export function UslugeGrid() {
         {services.map((service, i) => {
           const Icon = service.icon;
           return (
-            <article
+            <Link
               key={service.title}
+              href={service.href}
               style={{ transitionDelay: `${i * 80}ms` }}
               className="tc-reveal group relative flex flex-col rounded-2xl border border-border bg-surface/40 p-7 transition-[transform,border-color,background-color] duration-300 hover:-translate-y-1.5 hover:border-brand/40 hover:bg-surface"
             >
@@ -184,17 +152,14 @@ export function UslugeGrid() {
                 ))}
               </ul>
 
-              <Link
-                href={service.href}
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand opacity-80 transition-all duration-300 group-hover:opacity-100"
-              >
-                {service.cta}
+              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand opacity-80 transition-all duration-300 group-hover:opacity-100">
+                Saznajte više
                 <ArrowRight
                   size={15}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
-              </Link>
-            </article>
+              </span>
+            </Link>
           );
         })}
       </div>
