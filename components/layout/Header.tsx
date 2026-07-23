@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 const navLinks = [
@@ -45,15 +44,29 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Mobilno dugme */}
+        {/* Mobilno dugme — animirani hamburger koji se pretvara u „X" */}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Zatvori meni" : "Otvori meni"}
           aria-expanded={open}
-          className="text-foreground md:hidden"
+          className="group relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface/40 backdrop-blur-sm transition-colors hover:border-brand/50 md:hidden"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          <span
+            className={`absolute h-0.5 rounded-full bg-foreground transition-all duration-300 ease-out group-hover:bg-brand ${
+              open ? "w-5 rotate-45" : "w-5 -translate-y-[6px]"
+            }`}
+          />
+          <span
+            className={`absolute h-0.5 w-3.5 rounded-full bg-foreground transition-all duration-200 ease-out group-hover:bg-brand ${
+              open ? "scale-x-0 opacity-0" : "opacity-100"
+            }`}
+          />
+          <span
+            className={`absolute h-0.5 rounded-full bg-foreground transition-all duration-300 ease-out group-hover:bg-brand ${
+              open ? "w-5 -rotate-45" : "w-5 translate-y-[6px]"
+            }`}
+          />
         </button>
       </nav>
 
