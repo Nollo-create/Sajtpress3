@@ -46,7 +46,7 @@ export function Benefits() {
               kao investiciju
             </span>
           </h2>
-          <p className="mt-4 text-muted">
+          <p className="mt-4 text-lg text-muted">
             Skoro 53% malih preduzeća nema sajt — a većina velikih ga ima. Sajt je ključan za
             rast u digitalnom dobu.
           </p>
@@ -62,7 +62,7 @@ export function Benefits() {
                 <Icon size={22} />
               </div>
               <h3 className="text-lg text-foreground">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
+              <p className="mt-2 text-base leading-relaxed text-muted">{text}</p>
             </div>
           ))}
         </div>

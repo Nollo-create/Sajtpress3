@@ -61,7 +61,7 @@ export function Footer() {
                 press
               </span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm text-muted">
+            <p className="mt-4 max-w-xs text-base text-muted">
               Izrada modernih sajtova po meri koji donose rezultate. Pridružite se digitalnoj
               revoluciji.
             </p>
@@ -81,11 +81,11 @@ export function Footer() {
 
           {/* Usluge */}
           <div>
-            <h3 className="text-sm text-foreground">Usluge</h3>
+            <h3 className="text-base text-foreground">Usluge</h3>
             <ul className="mt-4 space-y-2.5">
               {usluge.map((u) => (
                 <li key={u}>
-                  <Link href="#usluge" className="text-sm text-muted transition-colors hover:text-foreground">
+                  <Link href="#usluge" className="text-base text-muted transition-colors hover:text-foreground">
                     {u}
                   </Link>
                 </li>
@@ -95,11 +95,11 @@ export function Footer() {
 
           {/* Navigacija */}
           <div>
-            <h3 className="text-sm text-foreground">Navigacija</h3>
+            <h3 className="text-base text-foreground">Navigacija</h3>
             <ul className="mt-4 space-y-2.5">
               {navigacija.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-muted transition-colors hover:text-foreground">
+                  <Link href={link.href} className="text-base text-muted transition-colors hover:text-foreground">
                     {link.label}
                   </Link>
                 </li>
@@ -109,8 +109,8 @@ export function Footer() {
 
           {/* Kontakt / podaci firme */}
           <div>
-            <h3 className="text-sm text-foreground">Kontakt</h3>
-            <ul className="mt-4 space-y-3 text-sm text-muted">
+            <h3 className="text-base text-foreground">Kontakt</h3>
+            <ul className="mt-4 space-y-3 text-base text-muted">
               <li className="flex items-start gap-2.5">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-brand" />
                 Beograd 11000, Srbija
@@ -128,7 +128,7 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-            <div className="mt-4 space-y-1 text-sm text-muted">
+            <div className="mt-4 space-y-1 text-base text-muted">
               <p>PIB: 112590107</p>
               <p>MB: 66213706</p>
             </div>
@@ -137,10 +137,10 @@ export function Footer() {
 
         {/* Donja traka */}
         <div className="mt-14 flex flex-col gap-4 border-t border-border/60 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-xs uppercase tracking-wider text-muted">
+          <p className="font-mono text-sm uppercase tracking-wider text-muted">
             © 2026 Sajtpress. Sva prava zadržana.
           </p>
-          <div className="flex gap-5 text-xs text-muted">
+          <div className="flex gap-5 text-sm text-muted">
             <Link href="#" className="transition-colors hover:text-foreground">
               Politika privatnosti
             </Link>

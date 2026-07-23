@@ -65,7 +65,7 @@ export function Pricing() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-3 text-sm font-medium text-brand">Cenovnik izrade sajtova</p>
           <h2 className="text-3xl text-ink sm:text-4xl">Na osnovu potreba formirali smo 3 paketa</h2>
-          <p className="mt-4 text-ink-muted">
+          <p className="mt-4 text-lg text-ink-muted">
             Izaberite paket koji odgovara vašem biznisu. Sve cene podrazumevaju mogućnost
             plaćanja u 2 rate.
           </p>
@@ -102,7 +102,7 @@ export function Pricing() {
               <Link
                 href="#kontakt"
                 className={
-                  "mt-6 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-colors " +
+                  "mt-6 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium uppercase tracking-wide transition-colors " +
                   (plan.featured
                     ? "bg-brand text-white hover:bg-brand-light"
                     : "border border-light-border text-ink hover:border-brand hover:text-brand")
@@ -113,7 +113,7 @@ export function Pricing() {
 
               <ul className="mt-7 space-y-3 border-t border-light-border pt-6">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm text-ink-muted">
+                  <li key={f} className="flex items-start gap-3 text-base text-ink-muted">
                     <Check size={16} className="mt-0.5 shrink-0 text-brand" />
                     {f}
                   </li>
@@ -133,7 +133,7 @@ export function Pricing() {
               Spajanje sa platnim karticama svih banaka Srbije — VISA, Mastercard, Maestro,
               DinaCard i PayPal.
             </p>
-            <p className="mt-1 text-sm text-ink-muted">
+            <p className="mt-1 text-base text-ink-muted">
               Mogućnost integracije kartičnog plaćanja sa vašom web prodavnicom (usluga se
               dodatno naplaćuje). Cene su informativnog karaktera i mogu varirati u zavisnosti
               od zahteva.

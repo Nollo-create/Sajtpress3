@@ -27,7 +27,7 @@ export function Contact() {
         <div>
           <p className="mb-3 text-sm font-medium text-brand">Kontakt</p>
           <h2 className="text-3xl sm:text-4xl">Imate pitanje?</h2>
-          <p className="mt-4 max-w-md text-muted">
+          <p className="mt-4 max-w-md text-lg text-muted">
             Pošaljite nam poruku i očekujte odgovor ubrzo. Recite nam nešto o svom biznisu, a
             mi predlažemo najbolje rešenje i okvirnu cenu.
           </p>

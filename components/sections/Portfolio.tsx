@@ -74,7 +74,7 @@ export function Portfolio() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-3 text-sm font-medium text-brand">Naši radovi</p>
           <h2 className="text-3xl sm:text-4xl">Sajtovi koje smo napravili</h2>
-          <p className="mt-4 text-muted">
+          <p className="mt-4 text-lg text-muted">
             Preko 25 izrađenih sajtova za firme u zemlji i inostranstvu — evo nekih od njih.
           </p>
         </div>
@@ -100,7 +100,7 @@ export function Portfolio() {
               <div className="flex items-start justify-between gap-3 p-5">
                 <div>
                   <h3 className="text-base text-foreground">{project.name}</h3>
-                  <p className="mt-1 text-sm text-muted">{project.description}</p>
+                  <p className="mt-1 text-base text-muted">{project.description}</p>
                 </div>
                 <ArrowUpRight
                   size={18}

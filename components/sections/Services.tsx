@@ -41,7 +41,7 @@ export function Services() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-3 text-sm font-medium text-brand">Naše usluge</p>
           <h2 className="text-3xl sm:text-4xl">Sve što vašem biznisu treba na internetu</h2>
-          <p className="mt-4 text-muted">
+          <p className="mt-4 text-lg text-muted">
             Od ideje do objave i dalje — pokrivamo ceo životni ciklus vašeg sajta.
           </p>
         </div>
@@ -56,7 +56,7 @@ export function Services() {
                 <Icon size={22} />
               </div>
               <h3 className="text-lg text-foreground">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p>
+              <p className="mt-2 text-base leading-relaxed text-muted">{description}</p>
             </div>
           ))}
         </div>

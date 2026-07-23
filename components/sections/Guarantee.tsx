@@ -32,13 +32,13 @@ export function Guarantee() {
               koja vraća uloženo
             </span>
           </h2>
-          <p className="mt-5 text-muted">
+          <p className="mt-5 text-lg text-muted">
             Za svaki sajt garantujemo funkcionalnost i dizajn koji će se pre svega{" "}
             <span className="text-foreground">Vama</span> svideti. Vi se bavite svojim poslom,
             a mi vodimo računa o vašem onlajn nastupu — od domena i hostinga do održavanja.
           </p>
           <div className="mt-8 rounded-xl border border-border bg-surface/40 p-5">
-            <p className="text-sm text-muted">
+            <p className="text-base text-muted">
               <span className="text-foreground">Plaćanje u 2 rate.</span> Prvi deo nakon
               definisanja ciljeva, drugi nakon kompletne izrade — da budete sigurni u kvalitet
               koji plaćate.
@@ -58,7 +58,7 @@ export function Guarantee() {
               </span>
               <div>
                 <h3 className="text-base text-foreground">{title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted">{text}</p>
+                <p className="mt-1 text-base leading-relaxed text-muted">{text}</p>
               </div>
             </div>
           ))}
