@@ -6,11 +6,11 @@ import { ArrowUpRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 const navLinks = [
-  { label: "Usluge", href: "#usluge" },
-  { label: "Cenovnik", href: "#cenovnik" },
-  { label: "Radovi", href: "#projekti" },
-  { label: "Utisci", href: "#utisci" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Usluge", href: "/usluge" },
+  { label: "Cenovnik", href: "/#cenovnik" },
+  { label: "Radovi", href: "/#projekti" },
+  { label: "Utisci", href: "/#utisci" },
+  { label: "Kontakt", href: "/#kontakt" },
 ];
 
 // Brend ikone (lucide ih ne izvozi) — inline SVG.
@@ -71,7 +71,7 @@ export function Header() {
         </div>
 
         <div className="hidden md:block">
-          <Button href="#kontakt" className="uppercase tracking-wide">
+          <Button href="/#kontakt" className="uppercase tracking-wide">
             Zatražite ponudu
           </Button>
         </div>
@@ -159,7 +159,7 @@ export function Header() {
             }`}
           >
             <Button
-              href="#kontakt"
+              href="/#kontakt"
               onClick={() => setOpen(false)}
               className="w-full justify-center py-4 text-base uppercase tracking-wide"
             >

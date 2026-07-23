@@ -1,4 +1,5 @@
-import { Code2, RefreshCw, ShieldCheck, Megaphone } from "lucide-react";
+import Link from "next/link";
+import { Code2, RefreshCw, ShieldCheck, Megaphone, ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Service = {
@@ -59,6 +60,16 @@ export function Services() {
               <p className="mt-2 text-base leading-relaxed text-muted">{description}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link
+            href="/usluge"
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface/40 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-brand/50 hover:text-brand"
+          >
+            Pogledajte sve usluge
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </div>
     </section>
