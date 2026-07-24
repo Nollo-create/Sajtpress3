@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { ArrowUpRight, Clock } from "lucide-react";
-import { posts, categories, type Post } from "@/lib/blog";
+import { useSearchParams } from "next/navigation";
+import { Clock } from "lucide-react";
+import { posts, categories, categorySlug, categoryFromSlug, type Post } from "@/lib/blog";
 
 function Card({ post }: { post: Post }) {
   return (
@@ -62,8 +62,10 @@ function Card({ post }: { post: Post }) {
 }
 
 export function BlogList() {
-  const [active, setActive] = useState<string>("Sve");
-  const filtered = active === "Sve" ? posts : posts.filter((p) => p.category === active);
+  // Aktivna kategorija se čita iz URL-a (npr. /blog?kategorija=seo),
+  // pa meni, filter-dugmad i deljenje linka rade istu stvar.
+  const active = categoryFromSlug(useSearchParams().get("kategorija"));
+  const filtered = active ? posts.filter((p) => p.category === active) : posts;
 
   const pill = (selected: boolean) =>
     "rounded-full border px-4 py-1.5 text-sm transition-colors " +
@@ -73,20 +75,20 @@ export function BlogList() {
 
   return (
     <div>
-      {/* Filter kategorija */}
-      <div className="flex flex-wrap gap-2.5">
-        <button type="button" onClick={() => setActive("Sve")} className={pill(active === "Sve")}>
+      {/* Filter kategorija — menja i URL da se izbor može podeliti */}
+      <div id="clanci" className="flex scroll-mt-28 flex-wrap gap-2.5">
+        <Link href="/blog" scroll={false} className={pill(active === null)}>
           Sve
-        </button>
+        </Link>
         {categories.map((c) => (
-          <button
+          <Link
             key={c.name}
-            type="button"
-            onClick={() => setActive(c.name)}
+            href={`/blog?kategorija=${categorySlug(c.name)}`}
+            scroll={false}
             className={pill(active === c.name)}
           >
             {c.name}
-          </button>
+          </Link>
         ))}
       </div>
 

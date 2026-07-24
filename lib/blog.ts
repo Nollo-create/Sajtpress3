@@ -277,3 +277,13 @@ export function getRelated(post: Post, count = 3) {
 export function categoryGradient(name: CategoryName) {
   return categories.find((c) => c.name === name)?.gradient ?? "from-brand to-coral";
 }
+
+/** Kategorija u URL-friendly oblik: „Dig. marketing" → „dig-marketing". */
+export function categorySlug(name: CategoryName) {
+  return slugifyHeading(name);
+}
+
+export function categoryFromSlug(slug: string | null) {
+  if (!slug) return null;
+  return categories.find((c) => categorySlug(c.name) === slug)?.name ?? null;
+}

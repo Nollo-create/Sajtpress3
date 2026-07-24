@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BlogList } from "@/components/blog/BlogList";
@@ -43,7 +44,9 @@ export default function BlogPage() {
 
             {/* Lista sa filterom */}
             <div className="mt-14">
-              <BlogList />
+              <Suspense fallback={<div className="h-96" />}>
+                <BlogList />
+              </Suspense>
             </div>
 
             {/* Newsletter */}

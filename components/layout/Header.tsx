@@ -19,15 +19,22 @@ import {
   Search,
   Target,
   ThumbsUp,
+  Megaphone,
+  Palette,
+  Layers,
+  Rss,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { categories, categorySlug, type CategoryName } from "@/lib/blog";
 
 type NavLink = {
   label: string;
   href: string;
   icon: LucideIcon;
   children?: { label: string; href: string; icon: LucideIcon }[];
+  /** Tekst poslednje stavke u podmeniju („Sve usluge", „Svi članci"). */
+  allLabel?: string;
 };
 
 const serviceLinks = [
@@ -40,12 +47,27 @@ const serviceLinks = [
   { label: "Facebook reklame", href: "/usluge/facebook-reklame", icon: ThumbsUp },
 ];
 
+const categoryIcons: Record<CategoryName, LucideIcon> = {
+  "Izrada sajtova": Code2,
+  "Dig. marketing": Megaphone,
+  "Veb dizajn": Palette,
+  WordPress: Layers,
+  SEO: Search,
+  "IT vesti": Rss,
+};
+
+const blogLinks = categories.map((c) => ({
+  label: c.name,
+  href: `/blog?kategorija=${categorySlug(c.name)}`,
+  icon: categoryIcons[c.name],
+}));
+
 const navLinks: NavLink[] = [
-  { label: "Usluge", href: "/usluge", icon: LayoutGrid, children: serviceLinks },
+  { label: "Usluge", href: "/usluge", icon: LayoutGrid, children: serviceLinks, allLabel: "Sve usluge" },
   { label: "Cenovnik", href: "/#cenovnik", icon: Tag },
   { label: "Radovi", href: "/#projekti", icon: Briefcase },
   { label: "Utisci", href: "/#utisci", icon: Star },
-  { label: "Blog", href: "/blog", icon: Newspaper },
+  { label: "Blog", href: "/blog", icon: Newspaper, children: blogLinks, allLabel: "Svi članci" },
   { label: "Kontakt", href: "/kontakt", icon: Mail },
 ];
 
@@ -63,23 +85,24 @@ const socials = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [subOpen, setSubOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  // Otvoreni podmeni: `href` stavke iz `navLinks` ili `null`.
+  const [subOpen, setSubOpen] = useState<string | null>(null);
+  const [dropdown, setDropdown] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
-  const openServices = () => {
+  const openDropdown = (href: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setServicesOpen(true);
+    setDropdown(href);
   };
-  const scheduleCloseServices = () => {
+  const scheduleCloseDropdown = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setServicesOpen(false), 140);
+    closeTimer.current = setTimeout(() => setDropdown(null), 140);
   };
 
   // Zaključaj skrol i zatvori na Escape dok je meni otvoren
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    if (!open) setSubOpen(false);
+    if (!open) setSubOpen(null);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
@@ -108,15 +131,16 @@ export function Header() {
 
           {/* Desktop navigacija */}
           <div className="hidden items-center gap-6 md:flex">
-            {navLinks.map((link) =>
-              link.children ? (
+            {navLinks.map((link) => {
+              const isOpen = dropdown === link.href;
+              return link.children ? (
                 <div
                   key={link.href}
                   className="relative"
-                  onMouseEnter={openServices}
-                  onMouseLeave={scheduleCloseServices}
-                  onFocus={openServices}
-                  onBlur={scheduleCloseServices}
+                  onMouseEnter={() => openDropdown(link.href)}
+                  onMouseLeave={scheduleCloseDropdown}
+                  onFocus={() => openDropdown(link.href)}
+                  onBlur={scheduleCloseDropdown}
                 >
                   <Link
                     href={link.href}
@@ -127,17 +151,17 @@ export function Header() {
                     <span
                       aria-hidden
                       className={`relative ml-1 inline-flex h-3.5 w-3.5 items-center justify-center transition-transform duration-300 ${
-                        servicesOpen ? "rotate-[135deg]" : ""
+                        isOpen ? "rotate-[135deg]" : ""
                       }`}
                     >
                       <span
                         className={`absolute h-[2px] w-3.5 rounded-full transition-colors ${
-                          servicesOpen ? "bg-brand" : "bg-foreground"
+                          isOpen ? "bg-brand" : "bg-foreground"
                         }`}
                       />
                       <span
                         className={`absolute h-3.5 w-[2px] rounded-full transition-colors ${
-                          servicesOpen ? "bg-brand" : "bg-foreground"
+                          isOpen ? "bg-brand" : "bg-foreground"
                         }`}
                       />
                     </span>
@@ -145,10 +169,10 @@ export function Header() {
 
                   {/* Dropdown panel */}
                   <div
-                    onMouseEnter={openServices}
-                    onMouseLeave={scheduleCloseServices}
+                    onMouseEnter={() => openDropdown(link.href)}
+                    onMouseLeave={scheduleCloseDropdown}
                     className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 transition-all duration-200 ${
-                      servicesOpen
+                      isOpen
                         ? "visible translate-y-0 opacity-100"
                         : "invisible -translate-y-1 opacity-0"
                     }`}
@@ -160,7 +184,7 @@ export function Header() {
                           <Link
                             key={c.href}
                             href={c.href}
-                            onClick={() => setServicesOpen(false)}
+                            onClick={() => setDropdown(null)}
                             className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:bg-surface hover:text-foreground"
                           >
                             <span className="flex items-center gap-2.5">
@@ -174,10 +198,10 @@ export function Header() {
                       <div className="my-1 h-px bg-white/10" />
                       <Link
                         href={link.href}
-                        onClick={() => setServicesOpen(false)}
+                        onClick={() => setDropdown(null)}
                         className="flex items-center gap-1.5 rounded-lg px-3 py-2.5 text-sm font-medium text-brand transition-colors hover:bg-surface"
                       >
-                        Sve usluge
+                        {link.allLabel}
                         <ArrowUpRight size={15} />
                       </Link>
                     </div>
@@ -191,8 +215,8 @@ export function Header() {
                 >
                   {link.label}
                 </Link>
-              ),
-            )}
+              );
+            })}
           </div>
 
           <div className="hidden md:block">
@@ -258,6 +282,7 @@ export function Header() {
               const reveal = open ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0";
 
               if (link.children) {
+                const expanded = subOpen === link.href;
                 return (
                   <div
                     key={link.href}
@@ -266,8 +291,8 @@ export function Header() {
                   >
                     <button
                       type="button"
-                      onClick={() => setSubOpen((v) => !v)}
-                      aria-expanded={subOpen}
+                      onClick={() => setSubOpen((v) => (v === link.href ? null : link.href))}
+                      aria-expanded={expanded}
                       className="group flex w-full items-center gap-4 py-5 text-left"
                     >
                       <span className="font-mono text-sm text-brand">0{i + 1}</span>
@@ -278,7 +303,7 @@ export function Header() {
                       <ChevronDown
                         size={26}
                         className={`ml-auto text-muted transition-transform duration-300 ${
-                          subOpen ? "rotate-180 text-brand" : ""
+                          expanded ? "rotate-180 text-brand" : ""
                         }`}
                       />
                     </button>
@@ -286,7 +311,7 @@ export function Header() {
                     {/* Podmeni (accordion) */}
                     <div
                       className={`overflow-hidden transition-all duration-300 ease-out ${
-                        subOpen ? "max-h-96 pb-4" : "max-h-0"
+                        expanded ? "max-h-[28rem] pb-4" : "max-h-0"
                       }`}
                     >
                       <div className="flex flex-col gap-1 pl-11">
@@ -295,7 +320,7 @@ export function Header() {
                           onClick={() => setOpen(false)}
                           className="py-2 text-lg font-medium text-brand transition-colors hover:text-brand-light"
                         >
-                          Sve usluge
+                          {link.allLabel}
                         </Link>
                         {link.children.map((c) => {
                           const CIcon = c.icon;
