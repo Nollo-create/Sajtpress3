@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import {
+  Inter,
+  Hanken_Grotesk,
+  JetBrains_Mono,
+  Space_Grotesk,
+  Fraunces,
+} from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,6 +22,18 @@ const hanken = Hanken_Grotesk({
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
@@ -48,7 +66,7 @@ export default function RootLayout({
   return (
     <html
       lang="sr"
-      className={`${inter.variable} ${hanken.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${hanken.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

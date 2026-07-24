@@ -14,6 +14,7 @@ const navigacija = [
   { label: "Usluge", href: "/usluge" },
   { label: "Cenovnik", href: "/#cenovnik" },
   { label: "Radovi", href: "/#projekti" },
+  { label: "Blog", href: "/blog" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 
