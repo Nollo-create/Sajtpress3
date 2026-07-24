@@ -223,11 +223,6 @@ const dummyPosts: Post[] = [
 
 export const posts: Post[] = [...seoPosts, ...dummyPosts];
 
-/** Uklanja markdown linkove iz teksta — za TOC, meta opise i sl. */
-export function stripLinks(text: string) {
-  return text.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
-}
-
 export function slugifyHeading(text: string) {
   return text
     .toLowerCase()
@@ -272,10 +267,6 @@ export function getRelated(post: Post, count = 3) {
     .filter((p) => p.slug !== post.slug)
     .sort((a, b) => (a.category === post.category ? -1 : 1) - (b.category === post.category ? -1 : 1))
     .slice(0, count);
-}
-
-export function categoryGradient(name: CategoryName) {
-  return categories.find((c) => c.name === name)?.gradient ?? "from-brand to-coral";
 }
 
 /** Kategorija u URL-friendly oblik: „Dig. marketing" → „dig-marketing". */

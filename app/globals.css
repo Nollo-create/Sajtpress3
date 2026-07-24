@@ -19,7 +19,6 @@
   /* Brend akcenti (Appwrite roze + topli koral) */
   --color-brand: #fd366e;
   --color-brand-light: #ff5c86;
-  --color-brand-dark: #e01e5a;
   --color-coral: #fe9567;
 
   /* Svetla sekcija (kontrast, kao na Appwrite-u) */
@@ -189,20 +188,6 @@
   animation: marquee-right 75s linear infinite;
 }
 
-/* Lagano lebdenje kartica */
-@keyframes float-soft {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-7px);
-  }
-}
-.float-soft {
-  animation: float-soft 7s ease-in-out infinite;
-}
-
 /* Pop zvezdica kad kartica postane vidljiva */
 @keyframes star-pop {
   0% {
@@ -277,8 +262,7 @@
     opacity: 1;
   }
   .marquee-track,
-  .marquee-track-rev,
-  .float-soft {
+  .marquee-track-rev {
     animation: none;
   }
   .tc-reveal {

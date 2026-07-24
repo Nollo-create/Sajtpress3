@@ -270,9 +270,13 @@ export function Testimonials() {
     if (!visible) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
-      setAvg(AVERAGE);
-      setClients(CLIENTS);
-      return;
+      // Bez animacije — krajnje vrednosti se postavljaju u sledećem frejmu,
+      // da se izbegne lančani render iz tela efekta.
+      const skip = requestAnimationFrame(() => {
+        setAvg(AVERAGE);
+        setClients(CLIENTS);
+      });
+      return () => cancelAnimationFrame(skip);
     }
     let raf = 0;
     const start = performance.now();

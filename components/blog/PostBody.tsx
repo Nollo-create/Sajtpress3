@@ -65,7 +65,9 @@ function AnchoredHeading({
 }
 
 export function PostBody({ content }: { content: Block[] }) {
-  let firstParagraph = true;
+  // Prvi pasus dobija drop-cap; indeks se računa unapred da se tokom
+  // rendera ništa ne menja.
+  const firstParagraph = content.findIndex((b) => b.type === "p");
   const headings = getHeadings(content);
   let headingIndex = 0;
 
@@ -99,8 +101,7 @@ export function PostBody({ content }: { content: Block[] }) {
         }
 
         if (block.type === "p") {
-          const dropcap = firstParagraph;
-          firstParagraph = false;
+          const dropcap = i === firstParagraph;
           return (
             <p
               key={i}

@@ -99,12 +99,18 @@ export function Header() {
     closeTimer.current = setTimeout(() => setDropdown(null), 140);
   };
 
+  // Zatvaranje uvek skuplja i otvoreni podmeni, da sledeće otvaranje
+  // menija krene iz istog stanja.
+  const closeMenu = () => {
+    setOpen(false);
+    setSubOpen(null);
+  };
+
   // Zaključaj skrol i zatvori na Escape dok je meni otvoren
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    if (!open) setSubOpen(null);
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") closeMenu();
     };
     window.addEventListener("keydown", onKey);
     return () => {
@@ -120,7 +126,7 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            onClick={() => setOpen(false)}
+            onClick={closeMenu}
             className="relative z-50 flex items-center gap-1 font-display text-2xl font-semibold uppercase"
           >
             <span className="text-foreground">Sajt</span>
@@ -228,7 +234,7 @@ export function Header() {
           {/* Mobilno dugme — animirani hamburger koji se pretvara u „X" */}
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => (open ? closeMenu() : setOpen(true))}
             aria-label={open ? "Zatvori meni" : "Otvori meni"}
             aria-expanded={open}
             className="group relative z-50 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface/40 backdrop-blur-sm transition-colors hover:border-brand/50 md:hidden"
@@ -316,7 +322,7 @@ export function Header() {
                       <div className="flex flex-col gap-1 pl-11">
                         <Link
                           href={link.href}
-                          onClick={() => setOpen(false)}
+                          onClick={closeMenu}
                           className="py-2 text-lg font-medium text-brand transition-colors hover:text-brand-light"
                         >
                           {link.allLabel}
@@ -327,7 +333,7 @@ export function Header() {
                             <Link
                               key={c.href}
                               href={c.href}
-                              onClick={() => setOpen(false)}
+                              onClick={closeMenu}
                               className="flex items-center gap-3 py-2 text-lg text-muted transition-colors hover:text-foreground"
                             >
                               <CIcon size={18} className="shrink-0 text-brand" />
@@ -345,7 +351,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setOpen(false)}
+                  onClick={closeMenu}
                   style={stagger}
                   className={`group flex items-center gap-4 border-b border-white/10 py-5 transition-all duration-500 ease-out ${reveal}`}
                 >
@@ -371,7 +377,7 @@ export function Header() {
           >
             <Button
               href="/zatrazite-ponudu"
-              onClick={() => setOpen(false)}
+              onClick={closeMenu}
               variant="gradient"
               className="w-full justify-center py-4 text-base uppercase tracking-wide"
             >
