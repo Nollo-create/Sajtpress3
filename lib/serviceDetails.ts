@@ -12,7 +12,8 @@ export type Block =
   | { type: "text"; heading?: string; paragraphs: string[] }
   | { type: "list"; heading: string; items: string[] }
   | { type: "steps"; heading: string; steps: { title: string; text?: string }[] }
-  | { type: "cards"; heading: string; cards: { title: string; text: string }[] };
+  | { type: "cards"; heading: string; cards: { title: string; text: string }[] }
+  | { type: "callout"; text: string };
 
 export type ServiceDetail = {
   slug: string;
@@ -211,6 +212,84 @@ export const services: Record<string, ServiceDetail> = {
     ],
     packagesNote:
       "Manje izmene (tekst, slike, baneri) plaćaju se dodatno, odvojeno od osnovnog paketa.",
+  },
+
+  "placanje-karticama": {
+    slug: "placanje-karticama",
+    title: "Plaćanje karticama na sajtu",
+    vertical: "Kartice",
+    metaDescription:
+      "Integracija kartičnog plaćanja (Visa, Mastercard, Maestro, Amex, DinaCard) na vaš sajt — brže, sigurnije i uz veću prodaju.",
+    intro:
+      "Kupci očekuju kupovinu bez muke i komplikovanih procedura. Kartično plaćanje je danas nezaobilazno za e-trgovinu — eliminiše gotovinu i omogućava kupovinu jednim klikom, uz sigurnost za obe strane.",
+    blocks: [
+      {
+        type: "cards",
+        heading: "Prednosti plaćanja karticama",
+        cards: [
+          {
+            title: "Brži proces",
+            text: "Kupovina sa nekoliko klikova smanjuje napuštanje korpe i povećava prodaju.",
+          },
+          {
+            title: "Veća fleksibilnost",
+            text: "Klijenti mogu otplaćivati tokom vremena — korisno za veće kupovine.",
+          },
+          {
+            title: "Bezbednost",
+            text: "Zaštita od prevara i opcije povraćaja sredstava pružaju sigurnost obema stranama.",
+          },
+          {
+            title: "Veća prodaja",
+            text: "Kupci koji plaćaju karticom češće završe transakciju i imaju veću vrednost porudžbine.",
+          },
+        ],
+      },
+      {
+        type: "steps",
+        heading: "Procedura postavljanja",
+        steps: [
+          {
+            title: "Zahtev banci",
+            text: "Podnosi se zahtev banci (Raiffeisen, Banca Intesa, NLB Komercijalna banka).",
+          },
+          { title: "Provera sajta", text: "Banka proverava sajt i da li ispunjava sve zahteve." },
+          { title: "Testiranje", text: "Integracija se testira sa testnim parametrima." },
+          { title: "Provera banke", text: "Banka sprovodi dodatno testiranje." },
+          {
+            title: "Aktivacija",
+            text: "Primenjuju se produkcijski parametri i plaćanje se aktivira.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        heading: "Uslovi koje sajt mora da ispuni",
+        items: [
+          "Tačni podaci o firmi (naziv, adresa, delatnost, kontakt)",
+          "Detaljan opis proizvoda i usluga",
+          "Iznosi izraženi u dinarima (RSD)",
+          "Kontakt podaci i korisnički servis",
+          "Način dostave i eventualna ograničenja",
+          "Politika reklamacija i povraćaja sredstava",
+          "Zaštita privatnosti i poverljivih podataka transakcije",
+          "SSL sertifikat (obavezno)",
+          "Logotipi podržanih kartica u futeru",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Vreme postavljanja i podržane kartice",
+        paragraphs: [
+          "Sama integracija traje 3–5 dana, a sa svim formalnostima banke 7–10 dana.",
+          "Podržane kartice: Visa, Mastercard, Maestro, American Express i DinaCard.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "Savet: ne kupujte karticom vezanom direktno za tekući račun. Zatražite internet karticu od banke i prebacujte sredstva samo po potrebi — tako štitite svoje račune.",
+      },
+    ],
   },
 
   seo: {

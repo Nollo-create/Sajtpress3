@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Lightbulb } from "lucide-react";
 import type { Block, ServiceDetail as ServiceDetailData } from "@/lib/serviceDetails";
 
 function BlockView({ block, index }: { block: Block; index: number }) {
@@ -59,6 +59,17 @@ function BlockView({ block, index }: { block: Block; index: number }) {
               {s.text && <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>}
             </div>
           ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (block.type === "callout") {
+    return (
+      <div className="tc-reveal" style={delay}>
+        <div className="flex items-start gap-3 rounded-2xl border border-brand/30 bg-brand/10 p-5 text-foreground">
+          <Lightbulb size={20} className="mt-0.5 shrink-0 text-brand" />
+          <p>{block.text}</p>
         </div>
       </div>
     );

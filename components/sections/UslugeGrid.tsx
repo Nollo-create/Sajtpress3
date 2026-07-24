@@ -6,6 +6,7 @@ import {
   Code2,
   Wand2,
   ShieldCheck,
+  CreditCard,
   Search,
   Target,
   ThumbsUp,
@@ -60,6 +61,18 @@ const services: Service[] = [
       "Praćenje dostupnosti i performansi",
     ],
     href: "/usluge/odrzavanje-sajtova",
+  },
+  {
+    icon: CreditCard,
+    title: "Plaćanje karticama",
+    description:
+      "Integracija kartičnog plaćanja svih banaka u Srbiji na vaš sajt.",
+    details: [
+      "Visa, Mastercard, Maestro, Amex, DinaCard",
+      "Brže i sigurnije plaćanje",
+      "Veća prodaja i manje napuštanja korpe",
+    ],
+    href: "/usluge/placanje-karticama",
   },
   {
     icon: Search,
