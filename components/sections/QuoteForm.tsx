@@ -112,9 +112,10 @@ export function QuoteForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-8 lg:grid-cols-[1fr_20rem]">
-      {/* Leva kolona — polja */}
-      <div className="space-y-10">
+    <form onSubmit={handleSubmit}>
+      <div className="grid gap-8 lg:grid-cols-[1fr_20rem]">
+        {/* Leva kolona — polja */}
+        <div className="space-y-10">
         {/* Usluge */}
         <fieldset>
           <legend className="text-lg text-foreground">Šta vam je potrebno?</legend>
@@ -329,18 +330,36 @@ export function QuoteForm() {
             </div>
           </dl>
 
-          <button
-            type="submit"
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-light"
-          >
-            Pošaljite upit
-            <Send size={16} />
-          </button>
-          <p className="mt-3 text-center text-xs text-muted">
+          <p className="mt-6 text-center text-xs text-muted">
             Bez obaveza. Javljamo se obično isti dan.
           </p>
         </div>
       </aside>
+      </div>
+
+      {/* Lebdeća akciona traka — dugme za slanje uvek vidljivo dok se popunjava */}
+      <div className="sticky bottom-4 z-20 mt-8 rounded-2xl border border-border bg-background/85 p-4 shadow-xl shadow-black/40 backdrop-blur-xl">
+        <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-muted">
+              Upit <span className="text-foreground">{completeness}%</span> spreman
+            </span>
+            <div className="h-1.5 w-28 overflow-hidden rounded-full bg-surface">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-brand to-coral transition-all duration-500"
+                style={{ width: `${completeness}%` }}
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-brand to-coral px-6 py-3 text-sm font-medium text-white shadow-lg shadow-brand/20 transition-all hover:brightness-110"
+          >
+            Pošaljite upit
+            <Send size={16} />
+          </button>
+        </div>
+      </div>
     </form>
   );
 }

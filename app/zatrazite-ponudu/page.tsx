@@ -14,9 +14,9 @@ export default function ZatrazitePonuduPage() {
     <>
       <Header />
       <main className="flex-1">
-        <section className="relative overflow-hidden">
-          {/* Aurora */}
-          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <section className="relative">
+          {/* Aurora (isečena u svom kontejneru da sekcija ne lomi sticky) */}
+          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
             <div className="aurora-center absolute left-1/4 top-[-8%] h-[440px] w-[760px] -translate-x-1/2 rounded-full bg-brand/16 blur-[130px]" />
             <div
               className="aurora-float absolute right-[6%] top-[22%] h-[320px] w-[320px] rounded-full bg-coral/12 blur-[110px]"

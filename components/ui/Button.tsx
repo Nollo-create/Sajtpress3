@@ -1,15 +1,18 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-type Variant = "primary" | "secondary";
+type Variant = "primary" | "secondary" | "gradient";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 const variants: Record<Variant, string> = {
   primary: "bg-brand text-white hover:bg-brand-light",
   secondary:
     "border border-border bg-surface/40 text-foreground hover:border-white/20 hover:bg-surface",
+  // Isti gradijent kao reč „press"
+  gradient:
+    "bg-gradient-to-r from-brand to-coral text-white shadow-lg shadow-brand/20 hover:brightness-110",
 };
 
 type ButtonProps = {
