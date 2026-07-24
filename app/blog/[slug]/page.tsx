@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { Header } from "@/components/layout/Header";
@@ -88,10 +89,23 @@ export default async function BlogPostPage({
           <div
             className={`relative mt-10 aspect-[21/9] overflow-hidden rounded-3xl bg-gradient-to-br ${post.gradient}`}
           >
-            <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(rgba(255,255,255,0.4)_1px,transparent_1px)] [background-size:18px_18px]" />
-            <span className="pointer-events-none absolute -bottom-10 right-6 font-serif text-[12rem] font-semibold leading-none text-white/15">
-              {post.category.charAt(0)}
-            </span>
+            {post.cover ? (
+              <Image
+                src={post.cover}
+                alt={post.title}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 1152px"
+                className="object-cover"
+              />
+            ) : (
+              <>
+                <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(rgba(255,255,255,0.4)_1px,transparent_1px)] [background-size:18px_18px]" />
+                <span className="pointer-events-none absolute -bottom-10 right-6 font-serif text-[12rem] font-semibold leading-none text-white/15">
+                  {post.category.charAt(0)}
+                </span>
+              </>
+            )}
           </div>
 
           {/* Telo + sadržaj (TOC) */}
@@ -160,7 +174,17 @@ export default async function BlogPostPage({
                     href={`/blog/${r.slug}`}
                     className="group overflow-hidden rounded-2xl border border-border bg-surface/40 transition-colors hover:border-brand/40"
                   >
-                    <div className={`aspect-[16/10] bg-gradient-to-br ${r.gradient}`} />
+                    <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${r.gradient}`}>
+                      {r.cover && (
+                        <Image
+                          src={r.cover}
+                          alt=""
+                          fill
+                          sizes="(max-width: 640px) 100vw, 33vw"
+                          className="object-cover"
+                        />
+                      )}
+                    </div>
                     <div className="p-5">
                       <span className="text-xs text-brand">{r.category}</span>
                       <h3 className="mt-1.5 font-serif text-lg leading-snug text-foreground transition-colors group-hover:text-brand">

@@ -1,4 +1,4 @@
-// Dummy blog sadržaj — zameniti pravim člancima kasnije.
+import { seoPosts } from "@/lib/posts/seo";
 
 export const categories = [
   { name: "Izrada sajtova", gradient: "from-brand to-coral" },
@@ -11,12 +11,17 @@ export const categories = [
 
 export type CategoryName = (typeof categories)[number]["name"];
 
+// U `text` poljima linkovi se pišu markdown sintaksom: [tekst](url)
 export type Block =
+  | { type: "lead"; text: string }
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
+  | { type: "h3"; text: string }
+  | { type: "h4"; text: string }
   | { type: "list"; items: string[] }
   | { type: "quote"; text: string; cite?: string }
-  | { type: "callout"; text: string };
+  | { type: "callout"; text: string }
+  | { type: "img"; src: string; alt: string; caption?: string };
 
 export type Post = {
   slug: string;
@@ -27,6 +32,8 @@ export type Post = {
   date: string;
   readTime: number;
   gradient: string;
+  /** Naslovna slika; ako nema, koristi se gradijent. */
+  cover?: string;
   tags: string[];
   content: Block[];
 };
@@ -34,7 +41,8 @@ export type Post = {
 const marko = { name: "Marko Petrović", role: "Web developer", initials: "MP" };
 const ana = { name: "Ana Jovanović", role: "Digital marketer", initials: "AJ" };
 
-export const posts: Post[] = [
+// Dummy članci — zameniti pravim tekstovima kada budu spremni.
+const dummyPosts: Post[] = [
   {
     slug: "koliko-kosta-izrada-sajta-2026",
     title: "Koliko zaista košta izrada sajta u 2026?",
@@ -179,43 +187,6 @@ export const posts: Post[] = [
     ],
   },
   {
-    slug: "seo-osnove-za-mala-preduzeca",
-    title: "SEO osnove koje svako malo preduzeće mora da zna",
-    excerpt:
-      "Bez komplikovanog žargona — praktični koraci da vas kupci pronađu na Google-u.",
-    category: "SEO",
-    author: ana,
-    date: "20. jun 2026.",
-    readTime: 8,
-    gradient: "from-amber-500 to-coral",
-    tags: ["SEO", "google", "vidljivost"],
-    content: [
-      {
-        type: "p",
-        text: "SEO deluje zastrašujuće, ali osnove su iznenađujuće jednostavne. Ako ih ispravno postavite, gradite vidljivost koja traje i ne zavisi od budžeta za reklame.",
-      },
-      { type: "h2", text: "Počnite od ključnih reči" },
-      {
-        type: "p",
-        text: "Razmislite šta vaši kupci zapravo kucaju u pretragu. Te fraze ugradite prirodno u naslove, tekst i opise — bez preterivanja.",
-      },
-      { type: "h2", text: "Tehnika i sadržaj" },
-      {
-        type: "list",
-        items: [
-          "Brz sajt prilagođen mobilnim uređajima",
-          "Jasna struktura naslova (H1, H2…)",
-          "Kvalitetan, koristan sadržaj koji odgovara na pitanja",
-          "Lokalni SEO: Google profil i tačni podaci firme",
-        ],
-      },
-      {
-        type: "quote",
-        text: "Najbolji SEO je koristan sadržaj koji rešava pravi problem korisnika.",
-      },
-    ],
-  },
-  {
     slug: "vestacka-inteligencija-i-izrada-sajtova",
     title: "Kako veštačka inteligencija menja izradu sajtova",
     excerpt:
@@ -249,6 +220,13 @@ export const posts: Post[] = [
     ],
   },
 ];
+
+export const posts: Post[] = [...seoPosts, ...dummyPosts];
+
+/** Uklanja markdown linkove iz teksta — za TOC, meta opise i sl. */
+export function stripLinks(text: string) {
+  return text.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
+}
 
 export function slugifyHeading(text: string) {
   return text

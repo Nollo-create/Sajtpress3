@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { posts, categories, type Post } from "@/lib/blog";
@@ -11,15 +12,28 @@ function Card({ post }: { post: Post }) {
       href={`/blog/${post.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface/40 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand/40"
     >
-      {/* Cover — gradijent + kategorija */}
+      {/* Cover — slika ili gradijent + kategorija */}
       <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${post.gradient}`}>
+        {post.cover && (
+          <Image
+            src={post.cover}
+            alt=""
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        )}
         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.45),transparent)]" />
-        <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(rgba(255,255,255,0.35)_1px,transparent_1px)] [background-size:14px_14px]" />
+        {!post.cover && (
+          <>
+            <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(rgba(255,255,255,0.35)_1px,transparent_1px)] [background-size:14px_14px]" />
+            <span className="pointer-events-none absolute -bottom-4 right-3 font-serif text-7xl font-semibold text-white/15">
+              {post.category.charAt(0)}
+            </span>
+          </>
+        )}
         <span className="absolute left-4 top-4 rounded-full bg-black/30 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
           {post.category}
-        </span>
-        <span className="pointer-events-none absolute -bottom-4 right-3 font-serif text-7xl font-semibold text-white/15">
-          {post.category.charAt(0)}
         </span>
       </div>
 
