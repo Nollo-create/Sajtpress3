@@ -295,7 +295,6 @@ export function Header() {
                       aria-expanded={expanded}
                       className="group flex w-full items-center gap-4 py-5 text-left"
                     >
-                      <span className="font-mono text-sm text-brand">0{i + 1}</span>
                       <Icon size={26} className="shrink-0 text-brand" />
                       <span className="font-nav text-4xl font-light text-foreground transition-colors group-hover:text-brand">
                         {link.label}
@@ -350,7 +349,6 @@ export function Header() {
                   style={stagger}
                   className={`group flex items-center gap-4 border-b border-white/10 py-5 transition-all duration-500 ease-out ${reveal}`}
                 >
-                  <span className="font-mono text-sm text-brand">0{i + 1}</span>
                   <Icon size={26} className="shrink-0 text-brand" />
                   <span className="font-nav text-4xl font-light text-foreground transition-colors group-hover:text-brand">
                     {link.label}
