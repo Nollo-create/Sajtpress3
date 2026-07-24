@@ -44,7 +44,7 @@ export default function ZatrazitePonuduPage() {
               {/* Hero */}
               <div className="max-w-3xl">
                 <div className="mb-6 inline-flex items-center gap-3 font-mono text-sm">
-                  <span className="text-brand">01</span>
+                  <span className="text-brand">✦</span>
                   <span className="h-px w-10 bg-brand/40" />
                   <span className="uppercase tracking-[0.25em] text-muted">Zatražite ponudu</span>
                 </div>

@@ -142,10 +142,10 @@ export function Footer() {
             © 2026 Sajtpress. Sva prava zadržana.
           </p>
           <div className="flex gap-5 text-sm text-muted">
-            <Link href="#" className="transition-colors hover:text-foreground">
+            <Link href="/politika-privatnosti" className="transition-colors hover:text-foreground">
               Politika privatnosti
             </Link>
-            <Link href="#" className="transition-colors hover:text-foreground">
+            <Link href="/uslovi-koriscenja" className="transition-colors hover:text-foreground">
               Uslovi korišćenja
             </Link>
           </div>

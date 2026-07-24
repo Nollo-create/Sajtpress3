@@ -27,7 +27,7 @@ export function Hero() {
           style={{ animationDelay: "0.05s" }}
         >
           <Sparkles size={14} className="text-brand" />
-          Web sajt već od 250 € · Plaćanje u 2 rate
+          Web sajt već od 300 € · Plaćanje u 2 rate
         </div>
 
         {/* Naslov — tanka težina, zbijen razmak, dvotonski (roze → belo) + shimmer */}

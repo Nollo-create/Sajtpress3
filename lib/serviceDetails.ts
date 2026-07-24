@@ -32,7 +32,7 @@ export const services: Record<string, ServiceDetail> = {
     title: "Izrada sajtova",
     vertical: "Izrada",
     metaDescription:
-      "Izrada sajtova po meri — od informativnih prezentacija do web prodavnica. Paketi od 250 €.",
+      "Izrada sajtova po meri — od informativnih prezentacija do web prodavnica. Paketi od 300 €.",
     intro:
       "Proces izrade počinje definisanjem cilja i svrhe sajta. Od informativnih prezentacija do web prodavnica — svaki tip ima svoje zahteve, a mi ih pokrivamo od ideje do objave.",
     blocks: [
@@ -77,7 +77,7 @@ export const services: Record<string, ServiceDetail> = {
     packages: [
       {
         name: "Osnovni paket",
-        price: "250 €",
+        price: "300 €",
         period: "do 7 dana",
         features: [
           "Do 5 strana",
@@ -90,7 +90,7 @@ export const services: Record<string, ServiceDetail> = {
       },
       {
         name: "Standardni paket",
-        price: "450 €",
+        price: "500 €",
         period: "do 10 dana",
         featured: true,
         features: [
@@ -104,7 +104,7 @@ export const services: Record<string, ServiceDetail> = {
       },
       {
         name: "Premijum paket",
-        price: "700 €",
+        price: "800 €",
         period: "15+ dana",
         features: [
           "10+ strana",
@@ -117,7 +117,7 @@ export const services: Record<string, ServiceDetail> = {
       },
     ],
     packagesNote:
-      "Izrada se kreće od 250 € do 1000–2000 € za veće prodavnice sa plaćanjem karticama. Cene su okvirne.",
+      "Izrada se kreće od 300 € do 1000–2000 € za veće prodavnice sa plaćanjem karticama. Cene su okvirne.",
   },
 
   "redizajn-sajtova": {

@@ -12,7 +12,7 @@ type Plan = {
 const plans: Plan[] = [
   {
     name: "Osnovni paket",
-    price: "250",
+    price: "300",
     delivery: "Izrada sajta do 7 dana",
     features: [
       "Do 5 strana",
@@ -26,7 +26,7 @@ const plans: Plan[] = [
   },
   {
     name: "Standardni paket",
-    price: "450",
+    price: "500",
     delivery: "Izrada sajta do 10 dana",
     featured: true,
     features: [
@@ -42,7 +42,7 @@ const plans: Plan[] = [
   },
   {
     name: "Premijum paket",
-    price: "700",
+    price: "800",
     delivery: "Izrada sajta od 15 i više dana",
     features: [
       "10 i više strana",
