@@ -243,10 +243,28 @@ export function getPost(slug: string) {
   return posts.find((p) => p.slug === slug);
 }
 
+export type Heading = { id: string; text: string; level: 2 | 3 | 4 };
+
+const HEADING_LEVEL = { h2: 2, h3: 3, h4: 4 } as const;
+
+/**
+ * Svi naslovi članka sa jedinstvenim ID-jem — koristi ga i `PostBody` i
+ * `TableOfContents` da bi se sidrišta uvek poklapala.
+ */
+export function getHeadings(content: Block[]): Heading[] {
+  const seen = new Map<string, number>();
+
+  return content.flatMap((b) => {
+    if (b.type !== "h2" && b.type !== "h3" && b.type !== "h4") return [];
+    const base = slugifyHeading(b.text) || "naslov";
+    const count = seen.get(base) ?? 0;
+    seen.set(base, count + 1);
+    return [{ id: count ? `${base}-${count + 1}` : base, text: b.text, level: HEADING_LEVEL[b.type] }];
+  });
+}
+
 export function getToc(post: Post) {
-  return post.content
-    .filter((b): b is Extract<Block, { type: "h2" }> => b.type === "h2")
-    .map((b) => ({ id: slugifyHeading(b.text), text: b.text }));
+  return getHeadings(post.content);
 }
 
 export function getRelated(post: Post, count = 3) {

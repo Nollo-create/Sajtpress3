@@ -1,8 +1,8 @@
 import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Check, Quote, Lightbulb } from "lucide-react";
-import { slugifyHeading, type Block } from "@/lib/blog";
+import { Check, Quote, Lightbulb, Hash } from "lucide-react";
+import { getHeadings, type Block } from "@/lib/blog";
 
 const LINK_RE = /\[([^\]]+)\]\(([^)]+)\)/g;
 
@@ -36,8 +36,38 @@ function richText(text: string): ReactNode {
   return parts.length ? parts.map((p, i) => <Fragment key={i}>{p}</Fragment>) : text;
 }
 
+/** Naslov kao sidro — klik vodi na sekciju, „#“ se pojavljuje na hover. */
+function AnchoredHeading({
+  as: Tag,
+  id,
+  className,
+  iconSize,
+  children,
+}: {
+  as: "h2" | "h3" | "h4";
+  id: string;
+  className: string;
+  iconSize: number;
+  children: string;
+}) {
+  return (
+    <Tag id={id} className={`group scroll-mt-28 ${className}`}>
+      <a href={`#${id}`} className="inline-flex items-start gap-2 transition-colors hover:text-brand">
+        <span>{children}</span>
+        <Hash
+          size={iconSize}
+          aria-hidden
+          className="mt-[0.35em] shrink-0 text-brand opacity-0 transition-opacity group-hover:opacity-70"
+        />
+      </a>
+    </Tag>
+  );
+}
+
 export function PostBody({ content }: { content: Block[] }) {
   let firstParagraph = true;
+  const headings = getHeadings(content);
+  let headingIndex = 0;
 
   return (
     <div className="space-y-6">
@@ -53,38 +83,18 @@ export function PostBody({ content }: { content: Block[] }) {
           );
         }
 
-        if (block.type === "h2") {
-          return (
-            <h2
-              key={i}
-              id={slugifyHeading(block.text)}
-              className="scroll-mt-28 pt-6 font-serif text-2xl text-foreground sm:text-3xl"
-            >
-              {block.text}
-            </h2>
-          );
-        }
+        if (block.type === "h2" || block.type === "h3" || block.type === "h4") {
+          const { id } = headings[headingIndex++];
+          const style = {
+            h2: { className: "pt-6 font-serif text-2xl text-foreground sm:text-3xl", iconSize: 18 },
+            h3: { className: "pt-3 font-display text-xl text-foreground", iconSize: 16 },
+            h4: { className: "pt-2 font-mono text-sm uppercase tracking-wider text-brand", iconSize: 13 },
+          }[block.type];
 
-        if (block.type === "h3") {
           return (
-            <h3
-              key={i}
-              id={slugifyHeading(block.text)}
-              className="scroll-mt-28 pt-3 font-display text-xl text-foreground"
-            >
+            <AnchoredHeading key={i} as={block.type} id={id} {...style}>
               {block.text}
-            </h3>
-          );
-        }
-
-        if (block.type === "h4") {
-          return (
-            <h4
-              key={i}
-              className="pt-2 font-mono text-sm uppercase tracking-wider text-brand"
-            >
-              {block.text}
-            </h4>
+            </AnchoredHeading>
           );
         }
 
