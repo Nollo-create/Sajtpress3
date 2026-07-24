@@ -17,10 +17,11 @@ export const metadata: Metadata = {
     "Stupite u kontakt sa Sajtpress timom — telefon, email i lokacija u Beogradu. Pošaljite upit i javljamo se ubrzo.",
 };
 
+// Centar Beograda (Stari Grad) — koordinate da se mapa centrira i marker poklopi sa pinom
 const MAP_EMBED =
-  "https://maps.google.com/maps?q=Beograd%2011000%2C%20Srbija&t=&z=12&ie=UTF8&iwloc=&output=embed";
+  "https://maps.google.com/maps?q=44.8168,20.4577&z=13&output=embed";
 const MAP_LINK =
-  "https://www.google.com/maps/search/?api=1&query=Beograd+11000+Srbija";
+  "https://www.google.com/maps/search/?api=1&query=44.8168,20.4577";
 
 const contactCards = [
   { icon: Phone, label: "Telefon", value: "065 2004 765", href: "tel:+3810652004765" },

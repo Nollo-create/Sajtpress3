@@ -11,9 +11,11 @@ import {
   Briefcase,
   Star,
   Mail,
+  Newspaper,
   Code2,
   Wand2,
   ShieldCheck,
+  CreditCard,
   Search,
   Target,
   ThumbsUp,
@@ -28,13 +30,11 @@ type NavLink = {
   children?: { label: string; href: string; icon: LucideIcon }[];
 };
 
-// Ikonice se boje gradijentom kao reč „press" (#press-gradient def ispod).
-const GRAD = "url(#press-gradient)";
-
 const serviceLinks = [
   { label: "Izrada sajtova", href: "/usluge/izrada-sajtova", icon: Code2 },
   { label: "Redizajn sajtova", href: "/usluge/redizajn-sajtova", icon: Wand2 },
   { label: "Održavanje sajtova", href: "/usluge/odrzavanje-sajtova", icon: ShieldCheck },
+  { label: "Plaćanje karticama", href: "/usluge/placanje-karticama", icon: CreditCard },
   { label: "SEO", href: "/usluge/seo", icon: Search },
   { label: "Google reklame", href: "/usluge/google-reklame", icon: Target },
   { label: "Facebook reklame", href: "/usluge/facebook-reklame", icon: ThumbsUp },
@@ -45,6 +45,7 @@ const navLinks: NavLink[] = [
   { label: "Cenovnik", href: "/#cenovnik", icon: Tag },
   { label: "Radovi", href: "/#projekti", icon: Briefcase },
   { label: "Utisci", href: "/#utisci", icon: Star },
+  { label: "Blog", href: "/blog", icon: Newspaper },
   { label: "Kontakt", href: "/kontakt", icon: Mail },
 ];
 
@@ -91,17 +92,7 @@ export function Header() {
 
   return (
     <>
-      {/* Gradijent za ikonice (kao reč „press") */}
-      <svg width="0" height="0" className="absolute" aria-hidden>
-        <defs>
-          <linearGradient id="press-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#fd366e" />
-            <stop offset="100%" stopColor="#fe9567" />
-          </linearGradient>
-        </defs>
-      </svg>
-
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-background/40 shadow-lg shadow-black/20 backdrop-blur-2xl backdrop-saturate-150">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-background/30 shadow-md shadow-black/10 backdrop-blur-xl backdrop-saturate-150">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
           {/* Logo */}
           <Link
@@ -116,10 +107,9 @@ export function Header() {
           </Link>
 
           {/* Desktop navigacija */}
-          <div className="hidden items-center gap-7 md:flex">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              return link.children ? (
+          <div className="hidden items-center gap-6 md:flex">
+            {navLinks.map((link) =>
+              link.children ? (
                 <div
                   key={link.href}
                   className="relative"
@@ -130,16 +120,27 @@ export function Header() {
                 >
                   <Link
                     href={link.href}
-                    className="flex items-center gap-1.5 text-base font-light tracking-wide text-foreground transition-colors hover:text-brand"
+                    className="flex items-center gap-1.5 font-nav text-base font-light tracking-wide text-foreground transition-colors hover:text-brand"
                   >
-                    <Icon size={17} color={GRAD} />
                     {link.label}
-                    <ChevronDown
-                      size={16}
-                      className={`transition-transform duration-200 ${
-                        servicesOpen ? "rotate-180 text-brand" : ""
+                    {/* Animirani „+" koji se rotira u „×" — zanimljiviji od strelice */}
+                    <span
+                      aria-hidden
+                      className={`relative ml-1 inline-flex h-3.5 w-3.5 items-center justify-center transition-transform duration-300 ${
+                        servicesOpen ? "rotate-[135deg]" : ""
                       }`}
-                    />
+                    >
+                      <span
+                        className={`absolute h-[2px] w-3.5 rounded-full transition-colors ${
+                          servicesOpen ? "bg-brand" : "bg-foreground"
+                        }`}
+                      />
+                      <span
+                        className={`absolute h-3.5 w-[2px] rounded-full transition-colors ${
+                          servicesOpen ? "bg-brand" : "bg-foreground"
+                        }`}
+                      />
+                    </span>
                   </Link>
 
                   {/* Dropdown panel */}
@@ -163,7 +164,7 @@ export function Header() {
                             className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:bg-surface hover:text-foreground"
                           >
                             <span className="flex items-center gap-2.5">
-                              <CIcon size={17} color={GRAD} />
+                              <CIcon size={17} className="text-brand" />
                               {c.label}
                             </span>
                             <ArrowUpRight size={15} className="text-muted/50" />
@@ -186,17 +187,16 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="flex items-center gap-1.5 text-base font-light tracking-wide text-foreground transition-colors hover:text-brand"
+                  className="flex items-center gap-1.5 font-nav text-base font-light tracking-wide text-foreground transition-colors hover:text-brand"
                 >
-                  <Icon size={17} color={GRAD} />
                   {link.label}
                 </Link>
-              );
-            })}
+              ),
+            )}
           </div>
 
           <div className="hidden md:block">
-            <Button href="/zatrazite-ponudu" className="uppercase tracking-wide">
+            <Button href="/zatrazite-ponudu" variant="gradient" className="uppercase tracking-wide">
               Zatražite ponudu
             </Button>
           </div>
@@ -271,8 +271,8 @@ export function Header() {
                       className="group flex w-full items-center gap-4 py-5 text-left"
                     >
                       <span className="font-mono text-sm text-brand">0{i + 1}</span>
-                      <Icon size={26} color={GRAD} className="shrink-0" />
-                      <span className="font-display text-4xl font-light text-foreground transition-colors group-hover:text-brand">
+                      <Icon size={26} className="shrink-0 text-brand" />
+                      <span className="font-nav text-4xl font-light text-foreground transition-colors group-hover:text-brand">
                         {link.label}
                       </span>
                       <ChevronDown
@@ -306,7 +306,7 @@ export function Header() {
                               onClick={() => setOpen(false)}
                               className="flex items-center gap-3 py-2 text-lg text-muted transition-colors hover:text-foreground"
                             >
-                              <CIcon size={18} color={GRAD} className="shrink-0" />
+                              <CIcon size={18} className="shrink-0 text-brand" />
                               {c.label}
                             </Link>
                           );
@@ -326,8 +326,8 @@ export function Header() {
                   className={`group flex items-center gap-4 border-b border-white/10 py-5 transition-all duration-500 ease-out ${reveal}`}
                 >
                   <span className="font-mono text-sm text-brand">0{i + 1}</span>
-                  <Icon size={26} color={GRAD} className="shrink-0" />
-                  <span className="font-display text-4xl font-light text-foreground transition-colors group-hover:text-brand">
+                  <Icon size={26} className="shrink-0 text-brand" />
+                  <span className="font-nav text-4xl font-light text-foreground transition-colors group-hover:text-brand">
                     {link.label}
                   </span>
                   <ArrowUpRight
@@ -349,6 +349,7 @@ export function Header() {
             <Button
               href="/zatrazite-ponudu"
               onClick={() => setOpen(false)}
+              variant="gradient"
               className="w-full justify-center py-4 text-base uppercase tracking-wide"
             >
               Zatražite ponudu
