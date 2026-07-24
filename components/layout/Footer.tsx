@@ -3,11 +3,11 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import type { SVGProps } from "react";
 
 const usluge = [
-  "Izrada sajtova",
-  "Redizajn sajtova",
-  "Održavanje sajtova",
-  "Google reklame",
-  "Facebook reklame",
+  { label: "Izrada sajtova", href: "/usluge/izrada-sajtova" },
+  { label: "Redizajn sajtova", href: "/usluge/redizajn-sajtova" },
+  { label: "Održavanje sajtova", href: "/usluge/odrzavanje-sajtova" },
+  { label: "Google reklame", href: "/usluge/google-reklame" },
+  { label: "Facebook reklame", href: "/usluge/facebook-reklame" },
 ];
 
 const navigacija = [
@@ -82,12 +82,12 @@ export function Footer() {
 
           {/* Usluge */}
           <div>
-            <h3 className="text-base text-foreground">Usluge</h3>
+            <h3 className="text-lg font-semibold tracking-wide text-foreground">Usluge</h3>
             <ul className="mt-4 space-y-2.5">
               {usluge.map((u) => (
-                <li key={u}>
-                  <Link href="/usluge" className="text-base text-muted transition-colors hover:text-foreground">
-                    {u}
+                <li key={u.href}>
+                  <Link href={u.href} className="text-base text-muted transition-colors hover:text-foreground">
+                    {u.label}
                   </Link>
                 </li>
               ))}
@@ -96,7 +96,7 @@ export function Footer() {
 
           {/* Navigacija */}
           <div>
-            <h3 className="text-base text-foreground">Navigacija</h3>
+            <h3 className="text-lg font-semibold tracking-wide text-foreground">Navigacija</h3>
             <ul className="mt-4 space-y-2.5">
               {navigacija.map((link) => (
                 <li key={link.href}>
@@ -110,7 +110,7 @@ export function Footer() {
 
           {/* Kontakt / podaci firme */}
           <div>
-            <h3 className="text-base text-foreground">Kontakt</h3>
+            <h3 className="text-lg font-semibold tracking-wide text-foreground">Kontakt</h3>
             <ul className="mt-4 space-y-3 text-base text-muted">
               <li className="flex items-start gap-2.5">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-brand" />
@@ -141,7 +141,7 @@ export function Footer() {
           <p className="font-mono text-sm uppercase tracking-wider text-muted">
             © 2026 Sajtpress. Sva prava zadržana.
           </p>
-          <div className="flex gap-5 text-sm text-muted">
+          <div className="flex gap-5 font-mono text-sm uppercase tracking-wider text-muted">
             <Link href="/politika-privatnosti" className="transition-colors hover:text-foreground">
               Politika privatnosti
             </Link>
